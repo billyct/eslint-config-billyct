@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "test": "eslint --config ./index.js && jest"
+  },
   "dependencies": {
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
@@ -12,5 +15,9 @@
   },
   "peerDependencies": {
     "eslint": "^7.21.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "jest": "^26.6.3"
   }
 }
