@@ -1,12 +1,11 @@
-const eslint = require('eslint')
+const {ESLint} = require('eslint')
 const path = require('path')
 
-test('load config in eslint to validate all rule syntax is correct', () => {
-  const CLIEngine = eslint.CLIEngine
+test('load config in eslint to validate all rule syntax is correct', async () => {
 
-  const cli = new CLIEngine({
+  const cli = new ESLint({
     useEslintrc: false,
-    configFile: path.resolve(__dirname, '../index.js')
+    overrideConfigFile: path.resolve(__dirname, '../index.js')
   })
 
   const code = `const foo = ['foo']
@@ -31,5 +30,7 @@ const f = new Foo()
 console.log(f.foo)
 `
 
-  expect(cli.executeOnText(code).errorCount).toBe(0)
+  const results = await cli.lintText(code)
+
+  expect(results[0].errorCount).toBe(0)
 })
