@@ -17,6 +17,18 @@ const bar = {
 
 const foobar = () => false
 foobar(foo, bar)
+
+const testFn = async () => false
+testFn()
+function fn() {}
+fn()
+class Foo {
+  constructor() {
+    this.foo = 'test'
+  }
+}
+const f = new Foo()
+console.log(f.foo)
 `
 
   expect(cli.executeOnText(code).errorCount).toBe(0)
